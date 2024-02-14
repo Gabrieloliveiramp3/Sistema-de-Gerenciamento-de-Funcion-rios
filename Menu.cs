@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-
-public class Menu
+﻿public class Menu
 {
-    BancoDeDados BD = new BancoDeDados();
-    CalculadoraSalario CS = new CalculadoraSalario();
-    EmailService email = new EmailService();
+    public BancoDeDados BD = new BancoDeDados();
+    public CalculadoraSalario CS = new CalculadoraSalario();
+    public EmailService email = new EmailService();
+
     public void ExibirTituloDaOpcao(string titulo)
     {
         int quantidadeDeLetras = titulo.Length;
@@ -37,15 +30,20 @@ public class Menu
                 break;
 
             case 2:
-                CS.CalcularSalario();
+                Console.Write("Digite  quantas horas o Funcionario trabalhou: ");
+                decimal horasTrabalhadas = decimal.Parse(Console.ReadLine()!);
+                Console.WriteLine("Digite o valor da hora trabalhada :");
+                decimal valorHora = decimal.Parse(Console.ReadLine());
+                CS.CalcularSalario(horasTrabalhadas, valorHora);
+                //Console.WriteLine($"O valor do Salario do Funcionario  e {horasTrabalhadas * valorHora}");
                 break;
 
             case 3:
                 Console.WriteLine("Digite o funcionario que deseja enviar email");
                 string envioEmail = Console.ReadLine();
                 Console.WriteLine("Digite o novo salario :");
-                string salario = Console.ReadLine();
-                email.EnviarEmailAumentoSalario(envioEmail,salario);
+                decimal salario = decimal.Parse(Console.ReadLine());
+                email.EnviarEmailAumentoSalario(, salario);
                 break;
 
             case 4:
@@ -66,8 +64,6 @@ public class Menu
         }
     }
 
-
-
     private void CadastrarFuncionario()
     {
         Console.Clear();
@@ -82,7 +78,3 @@ public class Menu
         ExibirMenu();
     }
 }
-
-
-
-      

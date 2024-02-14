@@ -11,5 +11,6 @@ BancoDeDados: Responsável por salvar os dados dos funcionários em um banco de 
 public class Program
 {
 
-    private Funcionario fun = new Funcionario();
+    Menu m = new Menu();
+ 
 }
